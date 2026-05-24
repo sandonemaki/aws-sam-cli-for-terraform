@@ -1,1 +1,6 @@
-.terraform/
+terraform/.terraform/
+terraform/.aws-sam/
+terraform/.aws-sam-iacs/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+.build/

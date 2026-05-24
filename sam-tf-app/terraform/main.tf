@@ -1,3 +1,4 @@
+# sam build --hook-name terraform --terraform-project-root-path  ./terraform/.terraform/providers/
 locals {
   # 絶対パスでプロジェクトルートを定義
   project_root    = abspath("${path.module}/..")

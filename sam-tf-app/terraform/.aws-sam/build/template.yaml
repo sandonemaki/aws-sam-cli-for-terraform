@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  AwsLambdaFunctionHelloEEEE9573:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: hello-function
+      Code: AwsLambdaFunctionHelloEEEE9573
+      Handler: bootstrap
+      PackageType: Zip
+      Runtime: provided.al2023
+      Timeout: 3
+      MemorySize: 128
+    Metadata:
+      BuildMethod: makefile
+      ContextPath: /Users/kima/work/sam-cli-for-tf/sam-tf-app/terraform/.aws-sam-iacs/iacs_metadata
+      ProjectRootDirectory: /Users/kima/work/sam-cli-for-tf/sam-tf-app
+      SamResourceId: aws_lambda_function.hello
+      SkipBuild: false
+      WorkingDirectory: /Users/kima/work/sam-cli-for-tf/sam-tf-app/terraform
+Metadata:
+  AWS::SAM::Hook:
+    HookName: terraform

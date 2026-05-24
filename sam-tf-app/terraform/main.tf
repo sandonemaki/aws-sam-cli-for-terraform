@@ -1,13 +1,15 @@
 locals {
-  lambda_src_path = "${path.module}/../functions/hello"
-  build_output    = "${path.module}/../.build"
+  # 絶対パスでプロジェクトルートを定義
+  project_root    = abspath("${path.module}/..")
+  lambda_src_path = "${local.project_root}/functions/hello"
+  build_output    = "${local.project_root}/.build"
 }
 
 # ① Go のビルド（GOOS=linux が必須）
 resource "null_resource" "build_hello" {
   triggers = {
-    # main.go が変わるたびに再ビルド
-    source_hash = filebase64sha256("${local.lambda_src_path}/main.go")
+    # timestamp() にすると毎回ビルド
+    always_run = timestamp()
   }
 
   provisioner "local-exec" {
@@ -36,7 +38,7 @@ resource "null_resource" "sam_metadata_aws_lambda_function_hello" {
     resource_type        = "ZIP_LAMBDA_FUNCTION"
     original_source_code = local.lambda_src_path
     # SAM CLI は built_output_path のバイナリを読んでローカル実行用のコンテナに渡
-    built_output_path = "${local.build_output}/bootstrap"
+    built_output_path = local.build_output
   }
 
   depends_on = [null_resource.build_hello]

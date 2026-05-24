@@ -18,6 +18,7 @@ resource "null_resource" "build_hello" {
       mkdir -p ${local.build_output}
       cd ${local.lambda_src_path} && \
       GOOS=linux GOARCH=amd64 go build -o ${local.build_output}/bootstrap .
+      chmod +x ${local.build_output}/bootstrap
     EOT
   }
 }

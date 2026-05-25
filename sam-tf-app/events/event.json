@@ -1,1 +1,20 @@
-{}
+{
+  "httpMethod": "GET",
+  "path": "/hello",
+  "queryStringParameters": null,
+  "multiValueQueryStringParameters": null,
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "multiValueHeaders": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "requestContext": {
+    "resourcePath": "/hello",
+    "httpMethod": "GET",
+    "stage": "stg"
+  },
+  "body": null,
+  "isBase64Encoded": false
+}
